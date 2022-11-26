@@ -1,0 +1,11 @@
+{
+  "name": "lottery",
+  "version": "1.0.0",
+  "description": "Im trying to forecast the lottery",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Juan David Puello López",
+  "license": "ISC"
+}
