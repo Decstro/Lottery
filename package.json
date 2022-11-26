@@ -4,8 +4,11 @@
   "description": "Im trying to forecast the lottery",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest"
   },
   "author": "Juan David Puello López",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "jest": "^29.3.1"
+  }
 }
