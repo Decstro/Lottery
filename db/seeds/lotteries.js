@@ -6,8 +6,17 @@ export async function seed(knex) {
   // Deletes ALL existing entries
   await knex('lotteries').del()
   await knex('lotteries').insert([
-    {id: 1, winning_combination: '123457', isRematch: false},
-    {id: 2, winning_combination: '123757', isRematch: false},
-    {id: 3, winning_combination: '233457', isRematch: true},
+    {
+      id: 1,
+      ballot_one: 12,
+      ballot_two: 9,
+      ballot_three: 23,
+      ballot_four: 43,
+      ballot_five: 5,
+      ballot_super: 8,
+      is_rematch: false,
+      week_day: 'Wednesday',
+      date: '2022-12-25'
+    },
   ]);
-};
+}

@@ -1,9 +1,15 @@
 import {Lottery} from '../../Models/lottery'
 
 export type CreateLotteryParams = {
-    winning_combination: string;
-    isRematch: boolean;
-    date: string;
+  ballot_one: number,
+  ballot_two: number,
+  ballot_three: number,
+  ballot_four: number,
+  ballot_five: number,
+  ballot_super: number,
+  is_rematch: boolean,
+  week_day: string,
+  date: string,
 };
 
 export interface LotteryRepository {

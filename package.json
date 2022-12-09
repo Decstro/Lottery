@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest",
+    "db-refresh": "knex migrate:rollback --env global && knex migrate:latest --env global && knex seed:run --env global",
     "db-migrate": "knex migrate:latest --env global",
     "create-migration": "knex migrate:make --env global ",
     "create-seed": "knex --env global seed:make"
