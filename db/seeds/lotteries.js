@@ -8,15 +8,27 @@ export async function seed(knex) {
   await knex('lotteries').insert([
     {
       id: 1,
-      ballot_one: 12,
-      ballot_two: 9,
-      ballot_three: 23,
-      ballot_four: 43,
-      ballot_five: 5,
-      ballot_super: 8,
+      ballot_one: 2,
+      ballot_two: 8,
+      ballot_three: 21,
+      ballot_four: 38,
+      ballot_five: 43,
+      ballot_super: 7,
+      is_rematch: true,
+      week_day: 'Saturday',
+      date: '2022-01-01'
+    },
+    {
+      id: 2,
+      ballot_one: 17,
+      ballot_two: 19,
+      ballot_three: 20,
+      ballot_four: 21,
+      ballot_five: 26,
+      ballot_super: 13,
       is_rematch: false,
-      week_day: 'Wednesday',
-      date: '2022-12-25'
+      week_day: 'Saturday',
+      date: '2022-01-01'
     },
   ]);
 }

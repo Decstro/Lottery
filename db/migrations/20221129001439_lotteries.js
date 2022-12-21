@@ -4,7 +4,7 @@
  */
 export function up(knex) {
   return knex.schema.createTable('lotteries', table => {
-    table.specificType('id', 'char(3)').notNullable().primary();
+    table.bigIncrements('id').notNullable().primary();
     table.integer('ballot_one').notNullable();
     table.integer('ballot_two').notNullable();
     table.integer('ballot_three').notNullable();

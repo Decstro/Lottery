@@ -1,7 +1,7 @@
 import {Model} from './model';
 
 export class Lottery extends Model {
-  public id(): string {
+  public id(): integer {
     return this.get('id');
   }
   public ballotOne(): boolean {
