@@ -1,8 +1,4 @@
-/**
- * @param { import("knex").Knex } knex
- * @returns {Knex.SchemaBuilder}
- */
-export function up(knex) {
+exports.up = function(knex) {
   return knex.schema.createTable('lotteries', table => {
     table.bigIncrements('id').notNullable().primary();
     table.integer('ballot_one').notNullable();
@@ -15,12 +11,8 @@ export function up(knex) {
     table.string('week_day').notNullable();
     table.date('date');
   });
-}
+};
 
-/**
- * @param { import("knex").Knex } knex
- * @returns {Knex.SchemaBuilder}
- */
-export function down(knex) {
+exports.down = function(knex) {
   return knex.schema.dropTableIfExists('lotteries');
 };

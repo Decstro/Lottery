@@ -1,34 +1,36 @@
-import {Model} from './model';
+const {Model} = require('./model')
 
-export class Lottery extends Model {
-  public id(): integer {
+class Lottery extends Model {
+  id() {
     return this.get('id');
   }
-  public ballotOne(): boolean {
+  ballotOne() {
     return this.get('ballot_one');
   }
-  public ballotTwo(): boolean {
+  ballotTwo() {
     return this.get('ballot_two');
   }
-  public ballotThree(): boolean {
+  ballotThree() {
     return this.get('ballot_three');
   }
-  public ballotFour(): boolean {
+  ballotFour() {
     return this.get('ballot_four');
   }
-  public ballotFive(): boolean {
+  ballotFive() {
     return this.get('ballot_five');
   }
-  public ballotSuper(): boolean {
+  ballotSuper() {
     return this.get('ballot_super');
   }
-  public weekDay(): boolean {
+  weekDay() {
     return this.get('week_day');
   }
-  public isRematch(): boolean {
+  isRematch() {
     return this.get('is_rematch');
   }
-  public date(): boolean {
+  date() {
     return this.get('date');
   }
 }
+
+exports.Lottery = Lottery

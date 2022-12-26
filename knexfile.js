@@ -1,6 +1,6 @@
-import {connection} from './db-connection.js'
+const connection = require('./db-connection.js');
 
-export default {
+module.exports =  {
   global: {
     connection,
     client: 'mysql',
@@ -13,3 +13,7 @@ export default {
     }
   }
 };
+
+
+
+

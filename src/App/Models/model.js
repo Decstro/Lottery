@@ -1,20 +1,21 @@
-export class Model {
-  private $attributes: Record<string, any>;
-  public constructor($attributes) {
-    this.$attributes = $attributes
+class Model {
+  attributes
+  constructor(attributes) {
+    this.attributes = attributes
   }
 
-
-  private get(key, defaultValue?) {
-    const value =  this.$attributes[key];
+  get(key, defaultValue) {
+    const value =  this.attributes[key];
     return typeof value === 'undefined' ? defaultValue : value;
   }
 
-  public getInfo() {
+  getInfo() {
     return this.getAttributes();
   }
 
-  public getAttributes() {
-    return this.$attributes;
+  getAttributes() {
+    return this.attributes;
   }
 }
+
+exports.Model = Model

@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "description": "Im trying to forecast the lottery",
   "main": "index.js",
-  "type": "module",
   "scripts": {
-    "test": "node --experimental-vm-modules node_modules/jest/bin/jest",
+    "start": "node app.js",
+    "test": "jest --runInBand --detectOpenHandles --forceExit",
+    "specific-test": "jest --runInBand --detectOpenHandles --forceExit --testNamePattern",
     "db-refresh": "knex migrate:rollback --env global && knex migrate:latest --env global && knex seed:run --env global",
     "db-migrate": "knex migrate:latest --env global",
     "create-migration": "knex migrate:make --env global ",
@@ -14,10 +15,13 @@
   "author": "Juan David Puello López",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
     "jest": "^29.3.1",
     "knex": "^2.3.0",
     "mysql": "^2.18.1",
     "mysql2": "^2.3.3",
+    "nodemon": "^2.0.20",
     "objection": "^3.0.1"
   }
 }
