@@ -33,5 +33,8 @@ describe('Testing Repository Lottery', () => {
     const response = await lotteryRepository.getBallotModesByDayAndRematch(3, 3, "2022-01-01", "2022-03-30","Wednesday", false);
     expect(response).toEqual([9, 38, 34]);
   });
-
+  test('Get Differences by Rematch', async () => {
+    const response = await lotteryRepository.getMediaDifferencesVertical(true);
+    expect(response).toEqual([6.105769230769231, 8.125, 7.846153846153846, 7.4423076923076925]);
+  });
 });

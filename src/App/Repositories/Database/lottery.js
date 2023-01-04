@@ -238,6 +238,30 @@ class LotteryRepository {
 
     return resultArray;
   }
+
+  async getMediaDifferencesVertical(isRematch) {
+    const ballotOneValues = await LotteryORM.query().select('ballot_one').where('is_rematch', '=', isRematch);
+    const ballotTwoValues = await LotteryORM.query().select('ballot_two').where('is_rematch', '=', isRematch);
+    const ballotThreeValues = await LotteryORM.query().select('ballot_three').where('is_rematch', '=', isRematch);
+    const ballotFourValues = await LotteryORM.query().select('ballot_four').where('is_rematch', '=', isRematch);
+    const ballotFiveValues = await LotteryORM.query().select('ballot_five').where('is_rematch', '=', isRematch);
+
+    const size = ballotOneValues.length;
+
+    let sumBetweenOneAndTwo = 0;
+    let sumBetweenTwoAndThree = 0;
+    let sumBetweenThreeAndFour = 0;
+    let sumBetweenFourAndFive = 0;
+
+    for (let i = 0; i < size ; i += 1) {
+      sumBetweenOneAndTwo += ballotTwoValues[i].ballot_two - ballotOneValues[i].ballot_one;
+      sumBetweenTwoAndThree += ballotThreeValues[i].ballot_three - ballotTwoValues[i].ballot_two;
+      sumBetweenThreeAndFour += ballotFourValues[i].ballot_four - ballotThreeValues[i].ballot_three;
+      sumBetweenFourAndFive += ballotFiveValues[i].ballot_five - ballotFourValues[i].ballot_four;
+    }
+
+    return [sumBetweenOneAndTwo/size , sumBetweenTwoAndThree/size, sumBetweenThreeAndFour/size, sumBetweenFourAndFive/size]
+  }
 }
 
 exports.LotteryRepository = LotteryRepository
