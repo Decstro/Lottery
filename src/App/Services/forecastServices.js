@@ -3,10 +3,87 @@ const {LotteryRepository} = require('../Repositories/Database/lottery');
 class ForecastService {
   lotteryRepository = new LotteryRepository();
 
+  
+
   async getWinningCombinations(k, startDate, endDate, weekDay, isRematch) {
     let arrayOfCombinations = []
     const arrayOfProbableNumbers = await this.getMostProbableNumbers(k, startDate, endDate, weekDay, isRematch);
+    for (let i = 1; i <= 2; i += 1) {
+      for (let j = 1; j <= 32; j += 1) {
+        if ( i === 1 ) {
+          if ( j <= 16 ) {
+            arrayOfCombinations.push([arrayOfProbableNumbers[0][0], arrayOfProbableNumbers[1][0]])
+          }
+          else {
+            arrayOfCombinations.push([arrayOfProbableNumbers[0][0], arrayOfProbableNumbers[1][1]])
+          }
+        }
+        else {
+          if ( j <= 16 ) {
+            arrayOfCombinations.push([arrayOfProbableNumbers[0][1], arrayOfProbableNumbers[1][0]])
+          }
+          else {
+            arrayOfCombinations.push([arrayOfProbableNumbers[0][1], arrayOfProbableNumbers[1][1]])
+          }
+        }
+      }
+    }
     
+    let count = 0
+    for (let i = 1; i <= 8; i += 1) {
+      for (let j = 1; j <= 8; j += 1) { 
+        count += 1            
+        if ( i%2 === 0 ) { 
+          if ( j <= 4) {
+            arrayOfCombinations[count - 1].push(arrayOfProbableNumbers[2][0])
+            arrayOfCombinations[count - 1].push(arrayOfProbableNumbers[3][0])
+          } 
+          else {
+            arrayOfCombinations[count - 1].push(arrayOfProbableNumbers[2][0])
+            arrayOfCombinations[count - 1].push(arrayOfProbableNumbers[3][1])
+          } 
+        }
+        else {
+          if ( j <= 4) {
+            arrayOfCombinations[count - 1].push(arrayOfProbableNumbers[2][1])
+            arrayOfCombinations[count - 1].push(arrayOfProbableNumbers[3][0])
+          } 
+          else {
+            arrayOfCombinations[count - 1].push(arrayOfProbableNumbers[2][1])
+            arrayOfCombinations[count - 1].push(arrayOfProbableNumbers[3][1])
+          }
+        }
+      }
+    }
+
+    let count2 = 0
+    for (let i = 1; i <= 32; i += 1) {
+      for (let j = 1; j <= 2; j += 1) { 
+        count2 += 1            
+        if ( i%2 === 0 ) { 
+          if ( j === 1) {
+            arrayOfCombinations[count2 - 1].push(arrayOfProbableNumbers[4][0])
+            arrayOfCombinations[count2 - 1].push(arrayOfProbableNumbers[5][0])
+          } 
+          else {
+            arrayOfCombinations[count2 - 1].push(arrayOfProbableNumbers[4][0])
+            arrayOfCombinations[count2 - 1].push(arrayOfProbableNumbers[5][1])
+          } 
+        }
+        else {
+          if ( j === 1) {
+            arrayOfCombinations[count2 - 1].push(arrayOfProbableNumbers[4][1])
+            arrayOfCombinations[count2 - 1].push(arrayOfProbableNumbers[5][0])
+          } 
+          else {
+            arrayOfCombinations[count2 - 1].push(arrayOfProbableNumbers[4][1])
+            arrayOfCombinations[count2 - 1].push(arrayOfProbableNumbers[5][1])
+          }
+        }
+      }
+    }
+    
+    return arrayOfCombinations
   };
   
   async getMostProbableNumbers(k, startDate, endDate, weekDay, isRematch) {
